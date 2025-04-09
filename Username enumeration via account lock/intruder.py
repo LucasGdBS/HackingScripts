@@ -139,6 +139,8 @@ def send_request(user):
         response = post(url, headers=headers, data=data)
         if len(response.content) != 3132:
             print(f'\033[92mUser: {user}, response: {len(response.content)}\033[0m')
+            with open('UsernameEnumerationUser.txt', 'w') as f:
+                f.write(f'{user}\n')
         print(f'User: {user}, response: {len(response.content)}')
 
 with ThreadPoolExecutor(max_workers=10) as executor:

